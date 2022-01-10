@@ -1,11 +1,9 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        a=a[::-1]
-        b=b[::-1]
+        a,b = a[::-1],b[::-1]
         n = max(len(a), len(b))
         a+="0"*(n-len(a))
         b+="0"*(n-len(b))
-        print(a,b)
         carry=0
         ans=""
         for i in range(n):
