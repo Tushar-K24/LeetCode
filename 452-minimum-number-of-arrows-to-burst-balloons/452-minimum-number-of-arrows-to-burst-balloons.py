@@ -1,9 +1,9 @@
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
         cnt=1
-        pts_sorted = sorted(points, key=lambda x: x[0])
-        intersection = pts_sorted[0]
-        for pt in pts_sorted:
+        points.sort(key=lambda x: x[0])
+        intersection = points[0]
+        for pt in points:
             if pt[0]>intersection[1]:
                 cnt+=1
                 intersection=pt
