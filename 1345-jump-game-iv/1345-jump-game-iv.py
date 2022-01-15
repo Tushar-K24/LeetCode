@@ -22,6 +22,8 @@ class Solution:
                         visited[i]=1
                         ans[i]=ans[x]+1
                         queue.append(i)
+                        if i==len(arr)-1:
+                            return ans[i]
             if x-1>=0:
                 if not visited[x-1]:
                     visited[x-1]=1
@@ -32,4 +34,6 @@ class Solution:
                     visited[x+1]=1
                     ans[x+1]=ans[x]+1
                     queue.append(x+1)
+                    if i==len(arr)-1:
+                        return ans[i]
         return ans[-1]
