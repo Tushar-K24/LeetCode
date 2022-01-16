@@ -1,9 +1,10 @@
 class Solution:
     def maxDistToClosest(self, seats: List[int]) -> int:
-        pos=[]
-        for idx,i in enumerate(seats):
-            if i: pos.append(idx)
-        dist=max(pos[0],len(seats)-pos[-1]-1)
-        for i in range(1,len(pos)):
-            dist=max(dist,(pos[i]-pos[i-1])//2)
+        prev, dist, n = -1, 0, len(seats)
+        for i in range(n):
+            if seats[i]:
+                if prev==-1: dist=max(dist,(i-prev-1))
+                else: dist=max(dist,(i-prev)//2)
+                prev=i
+        dist=max(dist,n-prev-1)
         return dist
