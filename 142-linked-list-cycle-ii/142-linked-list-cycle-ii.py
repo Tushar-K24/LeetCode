@@ -10,10 +10,9 @@ class Solution:
         sp, fp = head.next, head.next.next
         while fp and sp!=fp:
             sp = sp.next
-            if not fp.next:
+            if fp.next:
                 fp = fp.next
-                break
-            fp = fp.next.next
+            fp = fp.next
         if not fp: return None
         sp = head
         while fp!=sp:
