@@ -3,9 +3,9 @@ class Solution:
         res = []
         res.append(False)
         for i in range(1,n+1):
-            j,x = 1,False
+            j,x = 1,True
             while j*j<=i:
-                x|=not res[i-j*j]
+                x&=res[i-j*j]
                 j+=1
-            res.append(x)
+            res.append(not x)
         return res[n]
