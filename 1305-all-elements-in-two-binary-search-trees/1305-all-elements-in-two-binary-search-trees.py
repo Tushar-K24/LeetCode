@@ -7,9 +7,7 @@
 class Solution:
     def getAllElements(self, root1: TreeNode, root2: TreeNode) -> List[int]:
         def inorder(root):
-            if root==None:
-                return []
-            return inorder(root.left) + [root.val] + inorder(root.right)
+            return inorder(root.left) + [root.val] + inorder(root.right) if root else []
         
         def merge(l1, l2):
             ptr1,ptr2 = 0,0
