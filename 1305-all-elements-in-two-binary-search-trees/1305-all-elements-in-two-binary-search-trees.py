@@ -9,10 +9,7 @@ class Solution:
         def inorder(root):
             if root==None:
                 return []
-            l = inorder(root.left)
-            l.append(root.val)
-            l.extend(inorder(root.right))
-            return l
+            return inorder(root.left) + [root.val] + inorder(root.right)
         
         def merge(l1, l2):
             ptr1,ptr2 = 0,0
