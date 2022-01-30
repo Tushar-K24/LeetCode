@@ -1,9 +1,6 @@
-class Solution {
-public:
-    void rotate(vector<int>& nums, int k) {
-        k%=nums.size();
-        reverse(nums.begin(),nums.end());
-        reverse(nums.begin(),nums.begin()+k);
-        reverse(nums.begin()+k,nums.end());
-    }
-};
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        nums[:] = nums[-(k%len(nums)):] + nums[:-(k%len(nums))]
