@@ -1,21 +1,29 @@
 class Solution {
 public:
-    int sol_dp(vector<vector<int>> &dp, string &word1, string &word2, int n, int m){
-        if(n==0) return m;
-        if(m==0) return n;
-        int &ans = dp[n][m];
-        if(ans!=-1) return ans;
-        if(word1[n-1]==word2[m-1]) return ans = sol_dp(dp, word1, word2, n-1, m-1);
-        //replace the character
-        ans = sol_dp(dp, word1, word2, n-1, m-1) + 1;
-        //erase the character
-        ans = min(ans, sol_dp(dp, word1, word2, n-1,m) + 1);
-        //insert the character
-        ans = min(ans, sol_dp(dp, word1, word2, n, m-1) + 1);
-        return ans;
+    
+int minDistance(string str1, string str2) {
+  // Write your code here.
+  int n = str1.length(), m = str2.length();
+
+  vector<vector<int>> v(n+1,vector<int>(m+1,0));
+  for(int i = 0; i<=n ; i++){
+    v[i][0]=i;
+  }
+  for(int j = 0; j<=m ; j++){
+    v[0][j]=j;
+  }
+  
+  for(int i = 1; i<=n ; i++){
+    for(int j = 1; j<=m; j++){
+      int temp = min(v[i-1][j-1],min(v[i][j-1],v[i-1][j]));
+      if(str1[i-1]==str2[j-1])
+        v[i][j] = v[i-1][j-1];
+      else{
+        v[i][j] = temp+1;
+      }
     }
-    int minDistance(string word1, string word2) {
-        vector<vector<int>> dp(word1.size() + 1,vector<int>(word2.size() + 1, -1));
-        return sol_dp(dp, word1, word2, word1.size(), word2.size());
-    }
+  }
+  return v[n][m];
+}
+
 };
